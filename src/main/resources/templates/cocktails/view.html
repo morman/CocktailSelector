@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: html">
+<section>
+    <h1 class="h3 mb-3">Cocktail Details</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ingredients</h5>
+            <ul class="mb-3">
+                <li th:text="${cocktail.ingredient1}">2 oz base spirit</li>
+                <li th:text="${cocktail.ingredient2}">1 oz citrus</li>
+                <li th:text="${cocktail.ingredient3}">0.5 oz sweetener</li>
+            </ul>
+            <h5 class="card-title">Instructions</h5>
+            <ol>
+                <li th:text="${cocktail.instruction1}">Add all ingredients to a shaker with ice</li>
+                <li th:text="${cocktail.instruction2}">Shake until well chilled</li>
+                <li th:text="${cocktail.instruction3}">Strain into a chilled glass</li>
+            </ol>
+        </div>
+    </div>
+    <div class="mt-3 d-flex gap-2">
+        <a class="btn btn-secondary" th:href="@{/cocktails}">Back</a>
+        <a class="btn btn-primary" th:href="@{'/cocktails/' + ${cocktail.id} + '/edit'}">Edit</a>
+        <form th:action="@{'/cocktails/' + ${cocktail.id} + '/delete'}" method="post" class="d-inline"
+              onsubmit="return confirm('Delete this cocktail?');">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</section>
+</html>

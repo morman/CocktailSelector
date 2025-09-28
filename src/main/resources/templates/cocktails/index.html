@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: html">
+<section>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3">Cocktails</h1>
+        <a class="btn btn-primary" th:href="@{/cocktails/new}">Create New</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ingredient 1</th>
+                <th>Ingredient 2</th>
+                <th>Ingredient 3</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${cocktails}">
+                <td th:text="${c.id}">1</td>
+                <td th:text="${c.ingredient1}">2 oz base spirit</td>
+                <td th:text="${c.ingredient2}">1 oz citrus</td>
+                <td th:text="${c.ingredient3}">0.5 oz sweetener</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary" th:href="@{'/cocktails/' + ${c.id}}">View</a>
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{'/cocktails/' + ${c.id} + '/edit'}">Edit</a>
+                    <form th:action="@{'/cocktails/' + ${c.id} + '/delete'}" method="post" class="d-inline"
+                          onsubmit="return confirm('Delete this cocktail?');">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(cocktails)}">
+                <td colspan="5" class="text-center text-muted">No cocktails yet. Create one!</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</html>

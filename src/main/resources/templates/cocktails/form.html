@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: html">
+<section>
+    <h1 class="h3 mb-3" th:text="${title} ?: 'Create Cocktail'"></h1>
+    <form th:action="${#ids.prev('cocktail') != null and cocktail.id != null} ? @{'/cocktails/' + ${cocktail.id}} : @{/cocktails}"
+          th:object="${cocktail}" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 1 - Ounces</label>
+            <input type="number" min="0" class="form-control" th:field="*{ingredient1.ounces}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient1.ounces')}" th:errors="*{ingredient1.ounces}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 1 - Liquid</label>
+            <input type="text" class="form-control" th:field="*{ingredient1.liquid}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient1.liquid')}" th:errors="*{ingredient1.liquid}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 2 - Ounces</label>
+            <input type="number" min="0" class="form-control" th:field="*{ingredient2.ounces}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient2.ounces')}" th:errors="*{ingredient2.ounces}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 2 - Liquid</label>
+            <input type="text" class="form-control" th:field="*{ingredient2.liquid}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient2.liquid')}" th:errors="*{ingredient2.liquid}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 3 - Ounces</label>
+            <input type="number" min="0" class="form-control" th:field="*{ingredient3.ounces}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient3.ounces')}" th:errors="*{ingredient3.ounces}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Ingredient 3 - Liquid</label>
+            <input type="text" class="form-control" th:field="*{ingredient3.liquid}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient3.liquid')}" th:errors="*{ingredient3.liquid}"></div>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Instruction 1</label>
+            <input type="text" class="form-control" th:field="*{instruction1}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('instruction1')}" th:errors="*{instruction1}"></div>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Instruction 2</label>
+            <input type="text" class="form-control" th:field="*{instruction2}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('instruction2')}" th:errors="*{instruction2}"></div>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Instruction 3</label>
+            <input type="text" class="form-control" th:field="*{instruction3}" required>
+            <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('instruction3')}" th:errors="*{instruction3}"></div>
+        </div>
+        <div class="col-12 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" th:href="@{/cocktails}">Cancel</a>
+        </div>
+    </form>
+</section>
+</html>
