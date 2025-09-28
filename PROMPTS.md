@@ -5,3 +5,4 @@
 * "Modify CocktailSelector to have only 3 ingredients and 3 instructions."
 * "Implement CRUD operations for CocktailSelector with Thymeleaf and Bootstrap CSS."
 * "Refactor ingredient to extract it as a class with 2 fields: ounces as an integer, and liquid as a string."
+* "Modify ounces to be a float with 2 decimal places."

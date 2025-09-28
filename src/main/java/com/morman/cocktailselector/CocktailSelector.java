@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
+import java.math.BigDecimal;
+
 /**
  * JPA Entity representing a Cocktail with exactly 3 ingredients and 3 instructions.
  * This preserves the constraint from the previous requirement while enabling CRUD operations.
@@ -41,10 +43,10 @@ public class CocktailSelector {
     private String instruction3;
 
     public CocktailSelector() {
-        // default values using integer ounces as required
-        this.ingredient1 = new Ingredient(2, "base spirit");
-        this.ingredient2 = new Ingredient(1, "citrus");
-        this.ingredient3 = new Ingredient(1, "sweetener");
+        // default values using decimal ounces
+        this.ingredient1 = new Ingredient(new BigDecimal("2.00"), "base spirit");
+        this.ingredient2 = new Ingredient(new BigDecimal("1.00"), "citrus");
+        this.ingredient3 = new Ingredient(new BigDecimal("1.00"), "sweetener");
         this.instruction1 = "Add all ingredients to a shaker with ice";
         this.instruction2 = "Shake until well chilled";
         this.instruction3 = "Strain into a chilled glass";

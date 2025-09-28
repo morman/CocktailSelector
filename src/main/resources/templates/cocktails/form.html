@@ -6,7 +6,7 @@
           th:object="${cocktail}" method="post" class="row g-3">
         <div class="col-md-6">
             <label class="form-label">Ingredient 1 - Ounces</label>
-            <input type="number" min="0" class="form-control" th:field="*{ingredient1.ounces}" required>
+            <input type="number" min="0" step="0.01" class="form-control" th:field="*{ingredient1.ounces}" required>
             <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient1.ounces')}" th:errors="*{ingredient1.ounces}"></div>
         </div>
         <div class="col-md-6">
@@ -17,7 +17,7 @@
 
         <div class="col-md-6">
             <label class="form-label">Ingredient 2 - Ounces</label>
-            <input type="number" min="0" class="form-control" th:field="*{ingredient2.ounces}" required>
+            <input type="number" min="0" step="0.01" class="form-control" th:field="*{ingredient2.ounces}" required>
             <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient2.ounces')}" th:errors="*{ingredient2.ounces}"></div>
         </div>
         <div class="col-md-6">
@@ -28,7 +28,7 @@
 
         <div class="col-md-6">
             <label class="form-label">Ingredient 3 - Ounces</label>
-            <input type="number" min="0" class="form-control" th:field="*{ingredient3.ounces}" required>
+            <input type="number" min="0" step="0.01" class="form-control" th:field="*{ingredient3.ounces}" required>
             <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ingredient3.ounces')}" th:errors="*{ingredient3.ounces}"></div>
         </div>
         <div class="col-md-6">
